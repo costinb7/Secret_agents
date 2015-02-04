@@ -11,19 +11,24 @@ public class Agent {
 
    private String agency;
    
-   public Agent(String name, Address address, String agency, int age,
-		Set<Phone> phones) {
-	super();
-	this.name = name;
-	this.address = address;
-	this.agency = agency;
-	this.age = age;
-	this.phones = phones;
-}
 
-private int age;
+
+   private int age;
    
    private Set<Phone> phones;
+   
+   public Agent() {
+		super();
+	}
+   
+   public Agent(String name, Address address, String agency, int age,
+		Set<Phone> phones) {
+		this.name = name;
+		this.address = address;
+		this.agency = agency;
+		this.age = age;
+		this.phones = phones;
+   }
 
    public Set<Phone> getPhones() {
 	   return phones;
@@ -32,8 +37,6 @@ private int age;
 	public void setPhones(Set<Phone> phones) {
 		this.phones = phones;
 	}
-
-	public Agent() {}
 
 	public int getId() {
 		return id;
@@ -49,7 +52,7 @@ private int age;
 	
 	@Override
 	public String toString() {
-		return "Agent [id=" + id + ", name=" + name + ", address=" + address
+		return "Agent [id=" + id + ", name=" + name + ", address=" + address.toString()
 				+ ", agency=" + agency + ", age=" + age + ", phones=" + phones.toString()
 				+ "]";
 	}

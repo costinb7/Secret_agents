@@ -8,20 +8,25 @@ public class Phone {
 	private String network;
 	
 	public Phone(String number, String network) {
-		super();
 		this.number = number;
 		this.network = network;
+		//
 	}
 
 	public int getId() {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "Phone [number=" + number + ", network=" + network + "]";
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getNumber() {
+	public String getNumber() {//
 		return number;
 	}
 

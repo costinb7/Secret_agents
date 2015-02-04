@@ -8,9 +8,16 @@ public class Address {
 	private String country;
 
 	public Address(String city, String country) {
+		//aa
 		super();
 		this.city = city;
 		this.country = country;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", city=" + city + ", country=" + country
+				+ "]";
 	}
 
 	public int getId() {
