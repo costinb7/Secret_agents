@@ -22,18 +22,18 @@ public class ManageAgents {
 		  /* Let us have a set of certificates for the first employee  */
 		  
 		  /* Let us have one address object */
-	      //Address address = new Address("Bucuresti", "Romania");
-	      //ME.addAddress(address);
-	      //Phone phone1=new Phone("0723319148", "Vodafone");
-	      //Phone phone2=new Phone("0743319148", "Orange");
+	      Address address = new Address("Bucuresti", "Romania");
+	      ME.addAddress(address);
+	      Phone phone1=new Phone("0723319148", "Vodafone");
+	      Phone phone2=new Phone("0743319148", "Orange");
 	      HashSet set1 = new HashSet();
-	      //set1.add(phone1);
-	      //set1.add(phone2);
+	      set1.add(phone1);
+	      set1.add(phone2);
 	      
-	      //Agent agent1 = new Agent("Gogu", address, "SRI", 23, set1);
+	      Agent agent1 = new Agent("Gogu", address, "SRI", 23, set1);
 
 	      /* Add employee records in the database */
-	      //Integer empID1 = ME.addAgent(agent1);
+	      Integer empID1 = ME.addAgent(agent1);
 
 
 	      /* List down all the employees */
