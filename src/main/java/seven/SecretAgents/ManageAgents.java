@@ -18,27 +18,30 @@ public class ManageAgents {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex); 
          }
-		  ManageAgents ME = new ManageAgents();
-		  /* Let us have a set of certificates for the first employee  */
 		  
-		  /* Let us have one address object */
-	      Address address = new Address("Bucuresti", "Romania");
-	      ME.addAddress(address);
+    	  ManageAgents ME = new ManageAgents();
+		  
+	      //ME.addSomeAgents();
+	      
+
+	      /* List down all the employees */
+	      ME.listAgents("varsta<50");
+		 }
+    
+    public void addSomeAgents(){
+    	  Address address = new Address("Bucuresti", "Romania");
+	      addAddress(address);
 	      Phone phone1=new Phone("0723319148", "Vodafone");
-	      Phone phone2=new Phone("0743319148", "Orange");
-	      HashSet set1 = new HashSet();
+	      Phone phone2=new Phone("0743314444", "Orange");
+	      HashSet<Phone> set1 = new HashSet<Phone>();
 	      set1.add(phone1);
 	      set1.add(phone2);
 	      
-	      Agent agent1 = new Agent("Gogu", address, "SRI", 23, set1);
-
+	      Agent agent1 = new Agent("Vlad", address, "FBI", 30, set1);
+	
 	      /* Add employee records in the database */
-	      Integer empID1 = ME.addAgent(agent1);
-
-
-	      /* List down all the employees */
-	      ME.listAgents();
-		 }
+	      Integer empID1 = addAgent(agent1);
+    }
     
     
     /* Method to add an address record in the database */
@@ -78,16 +81,17 @@ public class ManageAgents {
     }
     
     /* Method to list all the employees detail */
-    public void listAgents( ){
+    public void listAgents(String condition){
        Session session = factory.openSession();
        Transaction tx = null;
        try{
           tx = session.beginTransaction();
-          List employees = session.createQuery("FROM Agent").list(); 
-          for (Iterator iterator = 
-                            employees.iterator(); iterator.hasNext();){
-             Agent employee = (Agent) iterator.next(); 
-             System.out.println(employee.toString());
+          String query = "FROM Agent ";
+          if (condition != null)
+        	  query = query + " where " + condition;
+          List<Agent> employees = session.createQuery(query).list(); 
+          for (Agent agent: employees){
+             System.out.println(agent.toString());
           }
           tx.commit();
        }catch (HibernateException e) {
