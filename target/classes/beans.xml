@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id="address1" class="seven.SecretAgents.Address">
+       <property name="city" value="Paris"/>
+       <property name="country" value="Franta"/>
+   </bean>
+   <bean id="address2" class="seven.SecretAgents.Address">
+       <property name="city" value="Bucharest"/>
+       <property name="country" value="Romania"/>
+   </bean>
+   <bean id="agent1" class="seven.SecretAgents.Agent">
+       <property name="name" value="Ion"/>
+       <property name="age" value="50"/>
+       <property name="agency" value="SRI"/>
+       <property name="address">
+	         <bean id="address3" class="seven.SecretAgents.Address">
+			       <property name="city" value="London"/>
+			       <property name="country" value="UK"/>
+	   		 </bean>
+	   </property>
+	   <property name="phones">
+        <set>
+           <bean id="phone1" class="seven.SecretAgents.Phone">
+			       <property name="number" value="0789292929"/>
+			       <property name="network" value="orange"/>
+	   		 </bean>
+	   		 <bean id="phone2" class="seven.SecretAgents.Phone">
+			       <property name="number" value="0789292934"/>
+			       <property name="network" value="cosmote"/>
+	   		 </bean>
+        </set>
+      </property>
+   </bean>
+   
+   <bean id="MA" class="seven.SecretAgents.ManageAgents">
+   </bean>
+
+</beans>

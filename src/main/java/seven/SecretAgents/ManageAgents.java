@@ -11,22 +11,14 @@ import org.hibernate.cfg.Configuration;
 
 public class ManageAgents {
 	private static SessionFactory factory; 
-    public static void main(String[] args) {
+    public ManageAgents() {
     	try{
             factory = new Configuration().configure().buildSessionFactory();
          }catch (Throwable ex) { 
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex); 
-         }
-		  
-    	  ManageAgents ME = new ManageAgents();
-		  
-	      //ME.addSomeAgents();
-	      
-
-	      /* List down all the employees */
-	      ME.listAgents("varsta<50");
-		 }
+         	}
+	}
     
     public void addSomeAgents(){
     	  Address address = new Address("Bucuresti", "Romania");
