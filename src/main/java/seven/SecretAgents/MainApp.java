@@ -11,8 +11,11 @@ public class MainApp {
 	      Address address1 = (Address) context.getBean("address1");
 	      Address address2 = (Address) context.getBean("address2");
 	      Agent agent1 = (Agent) context.getBean("agent1");
-	      */
+		MA.addAddress(agent1.getaddress());
+		MA.addAgent(agent1);
+		*/
 		ManageAgents MA = (ManageAgents) context.getBean("MA");
+
 	    MA.listAgents("varsta<53");
 	}
 }
