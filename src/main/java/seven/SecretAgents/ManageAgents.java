@@ -73,24 +73,30 @@ public class ManageAgents {
     }
     
     /* Method to list all the employees detail */
-    public void listAgents(String condition){
+    public String listAgents(String condition){
        Session session = factory.openSession();
        Transaction tx = null;
+       String result = "";
+
        try{
           tx = session.beginTransaction();
           String query = "FROM Agent ";
           if (condition != null)
         	  query = query + " where " + condition;
-          List<Agent> employees = session.createQuery(query).list(); 
+          List<Agent> employees = session.createQuery(query).list();
           for (Agent agent: employees){
-             System.out.println(agent.toString());
+             result = result + agent.toString();
           }
           tx.commit();
        }catch (HibernateException e) {
-          if (tx!=null) tx.rollback();
-          e.printStackTrace(); 
+    	   System.out.println("AJUBGEEEEEEEEEEEEEEEEEEEEEEE");
+           e.printStackTrace(); 
+           if (tx!=null) tx.rollback();
+
        }finally {
           session.close(); 
        }
+       return result;
+
     }
 }
