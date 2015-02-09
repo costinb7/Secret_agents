@@ -10,15 +10,24 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class ManageAgents {
-	private static SessionFactory factory; 
-    public ManageAgents() {
+	private static SessionFactory factory;
+	
+    public static SessionFactory getFactory() {
+		return factory;
+	}
+	public static void setFactory(SessionFactory factory) {
+		ManageAgents.factory = factory;
+	}
+	public ManageAgents(){}; 
+    /*
+    {
     	try{
             factory = new Configuration().configure().buildSessionFactory();
          }catch (Throwable ex) { 
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex); 
          	}
-	}
+	}*/
     
     public void addSomeAgents(){
     	  Address address = new Address("Bucuresti", "Romania");

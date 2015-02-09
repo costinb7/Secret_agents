@@ -43,11 +43,46 @@
       </property>
    </bean>
    
-   <bean id="MA" class="seven.SecretAgents.ManageAgents">
-   </bean>
+
 
     
     <bean id="aspect1" class="seven.SecretAgents.Logging"/>   
+    
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+        destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/test" />
+        <property name="username" value="root" />
+        <property name="password" value="13141592" />
+    </bean>
+    
+    
+    
+    <bean id="mysessionFactory"  class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource"></property>  
+        <property name="packagesToScan" value="org.baeldung.spring.persistence.model" />
+          
+        <property name="mappingResources">  
+        <list>  
+        <value>secretagents.hbm.xml</value>  
+        </list>  
+        </property>  
+          
+        <property name="hibernateProperties">  
+            <props>  
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>  
+                <prop key="hibernate.hbm2ddl.auto">update</prop>  
+                <prop key="hibernate.show_sql">true</prop>  
+                  
+            </props>  
+        </property>  
+    </bean>  
+    
+
+   <bean id="MA" class="seven.SecretAgents.ManageAgents">
+   		<property name="factory" ref="mysessionFactory" />
+   </bean>    
 
 
 </beans>
